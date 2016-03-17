@@ -6,7 +6,7 @@ marketo-rest-api is a NodeJs interface for Marketo REST API @ http://developers.
 ## Installation
 
 ```sh
-$ npm install marketo-rest-api
+$ npm install marketo-simple-rest-api
 ```
 
 ## Marketo API Requirement
@@ -17,7 +17,7 @@ Follow the instruction @ http://developers.marketo.com/blog/quick-start-guide-fo
 ## Usage
 
 ### init(options, callback);
-Initialize marketo-rest-api with your Marketo confirgurations including campaigns and lists. 
+Initialize marketo-rest-api with your Marketo confirgurations including campaigns and lists.
 
 ```js
 var marketo = require('marketo-rest-api');
@@ -42,14 +42,14 @@ marketo.init(options, function(response){
 ```
 
 ### syncLead(options, callback);
-Sync leads on Marketo lead database and associates the lead to Marketo list. 
+Sync leads on Marketo lead database and associates the lead to Marketo list.
 
 ```js
 var options: {
 	'process': 'add' || 'update' || 'remove',
 	'list': 'listname from 'lists':{...} in init()',
 	'input': {
-		'email': 'user@email.com', 
+		'email': 'user@email.com',
 		'firstName': 'John',
 		'lastName': 'Doe',
 		'title': 'Techie',
@@ -71,7 +71,7 @@ Schedules Marketo to send an email campaign to selected user.
 ```js
 var options: {
 	'email': 'user@email.com',
-	'campaign': 'campaignname from 'campaigns':{...} in init()', 
+	'campaign': 'campaignname from 'campaigns':{...} in init()',
 	'tokens': [
 		{'name': '{{token1_name}}', 'value': 'some value'},
 		{'name': '{{token2_name}}', 'value': 'some value'},
@@ -85,7 +85,7 @@ marketo.sendEmail(options, function(response){
 
 ## Tests
 
-Before running test for the first time, provide Marketo API values in ./test/test.json. 
+Before running test for the first time, provide Marketo API values in ./test/test.json.
 
 ```sh
 $ npm test
