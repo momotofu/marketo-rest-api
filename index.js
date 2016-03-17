@@ -1,5 +1,5 @@
 /*
-  Author: Joe Choi <joechoi910@gmail.com> 
+  Author: Joe Choi <joechoi910@gmail.com>
 */
 'use strict';
 var _ = require('underscore'),
@@ -56,12 +56,12 @@ exports.init = function (options, callback) {
   syncLead(options, callback);
   Sync leads on Marketo lead database and associates the lead to Marketo list.
 
-  Example: 
+  Example:
   var options: {
     'process': 'add' || 'update' || 'remove',
     'list': 'listname from 'lists':{...} in init()',
     'input': {
-      'email': 'user@email.com', 
+      'email': 'user@email.com',
       'firstName': 'John',
       'lastName': 'Doe',
       'title': 'Techie',
@@ -91,10 +91,10 @@ exports.syncLead = function (options, callback) {
   sendEmail(options, callback);
   Schedules Marketo to send an email campaign to selected user.
 
-  Example: 
+  Example:
   var options: {
     'email': 'user@email.com',
-    'campaign': 'campaignname from 'campaigns':{...} in init()', 
+    'campaign': 'campaignname from 'campaigns':{...} in init()',
     'tokens': [
       {'name': '{{token1_name}}', 'value': 'some value'},
       {'name': '{{token2_name}}', 'value': 'some value'},
@@ -126,7 +126,7 @@ var processInit = function (options, callback){
 /*
   After authenticated with Marketo API, execute lead sync job using Marketo API.
 
-  For add & update lead, 
+  For add & update lead,
     1) add or update lead
     2) add lead to list
   For remove lead,
@@ -176,13 +176,13 @@ var processSyncLead = function (options, callback){
       getLeadId(options.email, function(response){
         if(options.debug) console.log('getLeadId:' + response.success);
         if(response.success === true){
-          
+
           // 2) remove lead
           var leadId = response.leadId;
           removeLead(leadId, function(response){
             if(options.debug) console.log('removeLead:' + response.success);
             if(response.success === true){
-              
+
               // 3) remove lead from list
               if(listId !== '') {
                 removeLeadFromList(leadId, listId, function(response){
@@ -227,7 +227,7 @@ var processSendEmail = function (options, callback){
   getLeadId(options.email, function(response){
     if(options.debug) console.log('getLeadId:' + response.success);
     if(response.success === true){
-      
+
       // 2) request campaign
       var leadId = response.leadId;
       requestCampaign(campaignId, leadId, options.tokens, function(response){
@@ -306,10 +306,10 @@ var getLeadId = function (email, callback) {
 */
 var addLeadToList = function (leadId, listId, callback) {
   var url = restEndpoint + 'rest/v1/lists/' + listId + '/leads.json?access_token=' + accessToken;
-  var data = { 
+  var data = {
     'input': [{
       'id': leadId
-    }] 
+    }]
   };
   request({
       method: 'POST',
@@ -333,10 +333,10 @@ var addLeadToList = function (leadId, listId, callback) {
 */
 var removeLeadFromList = function (leadId, listId, callback) {
   var url = restEndpoint + 'rest/v1/lists/' + listId + '/leads.json?access_token=' + accessToken + '&_method=DELETE';
-  var data = { 
+  var data = {
     'input': [{
       'id': leadId
-    }] 
+    }]
   };
   request({
       method: 'POST',
@@ -360,10 +360,10 @@ var removeLeadFromList = function (leadId, listId, callback) {
 */
 var addOrUpdateLead = function (options, callback){
   var url = restEndpoint + 'rest/v1/leads.json?access_token=' + accessToken;
-  var data = { 
-    'action': 'createOrUpdate', 
+  var data = {
+    'action': 'createOrUpdate',
     'lookupField': 'email',
-    'input': [options.input] 
+    'input': [options.input]
   };
   data.input[0].email = options.email;
   request({
@@ -377,7 +377,7 @@ var addOrUpdateLead = function (options, callback){
         callback({'success':true, 'leadId':body.result[0].id});
       }
       else{
-        callback({'success':false, 'error':'Marketo Add & Edit Lead API failed.'});
+        callback({'success':false, 'error':'Marketo Add & Edit Lead API failed with error: ' + JSON.stringify(error)});
       }
   });
 };
@@ -388,10 +388,10 @@ var addOrUpdateLead = function (options, callback){
 */
 var removeLead = function (leadId, callback){
   var url = restEndpoint + 'rest/v1/leads.json?access_token=' + accessToken;
-  var data = { 
+  var data = {
     'input': [{
       'id': leadId
-    }] 
+    }]
   };
   request({
       method: 'DELETE',
@@ -415,12 +415,12 @@ var removeLead = function (leadId, callback){
 */
 var requestCampaign = function (campaignId, leadId, tokens, callback){
   var url = restEndpoint + 'rest/v1/campaigns/' + campaignId + '/trigger.json?access_token=' + accessToken;
-  var data = { 
+  var data = {
     'input': {
       'leads': [{
         'id': leadId
       }],
-    } 
+    }
   };
   // add tokens if exists
   if (tokens && tokens.length > 0){
