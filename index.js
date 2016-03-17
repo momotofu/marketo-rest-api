@@ -378,7 +378,7 @@ var addOrUpdateLead = function (options, callback){
         callback({'success':true, 'leadId':body.result[0].id});
       }
       else{
-        callback({'success':false, 'error':'Marketo Add & Edit Lead API failed with error: ' + JSON.stringify(error) + ' response: ' + JSON.stringify(response) + ' body: ' + JSON.stringify(body)});
+        callback({'success':false, 'error':'Marketo Add & Edit Lead API failed with error: ' + JSON.stringify(error, null, 4) + ' response: ' + JSON.stringify(response, null, 4) + ' body: ' + JSON.stringify(body, null, 4)});
       }
   });
 };
