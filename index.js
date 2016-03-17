@@ -1,6 +1,7 @@
 /*
   Author: Joe Choi <joechoi910@gmail.com>
 */
+
 'use strict';
 var _ = require('underscore'),
   request = require('request'),
@@ -377,7 +378,7 @@ var addOrUpdateLead = function (options, callback){
         callback({'success':true, 'leadId':body.result[0].id});
       }
       else{
-        callback({'success':false, 'error':'Marketo Add & Edit Lead API failed with error: ' + JSON.stringify(error)});
+        callback({'success':false, 'error':'Marketo Add & Edit Lead API failed with error: ' + JSON.stringify(error) + ' response: ' + JSON.stringify(response) + ' body: ' + JSON.stringify(body)});
       }
   });
 };
