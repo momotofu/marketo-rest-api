@@ -1,6 +1,6 @@
 {
   "name": "marketo-simple-rest-api",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "NodeJs interface for Marketo REST API. Syncs leads and sends email campaigns via Marketo platform.",
   "main": "index.js",
   "scripts": {
