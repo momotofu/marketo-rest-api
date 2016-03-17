@@ -8,12 +8,12 @@
   },
   "keywords": [
     "marketo"
-  ], 
+  ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/joechoi-git/marketo-rest-api"
+    "url": "https://github.com/momotofu/marketo-rest-api"
   },
-  "author": "Joe Choi <joechoi910@gmail.com> (http://www.rga.com)",
+  "author": "Christopher Reece",
   "license": "MIT",
   "dependencies": {
     "request": "^2.64.0",
