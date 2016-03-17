@@ -11,7 +11,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/momotofu/marketo-rest-api"
+    "url": "https://github.com/momotofu/marketo-simple-rest-api"
   },
   "author": "Christopher Reece",
   "license": "MIT",

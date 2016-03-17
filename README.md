@@ -1,7 +1,7 @@
-#marketo-rest-api
+#marketo-simple-rest-api
 =========
 
-marketo-rest-api is a NodeJs interface for Marketo REST API @ http://developers.marketo.com/documentation/rest/. Syncs leads and sends email campaigns via Marketo platform.
+marketo-simple-rest-api is a NodeJs interface for Marketo REST API @ http://developers.marketo.com/documentation/rest/. Syncs leads and sends email campaigns via Marketo platform.
 
 ## Installation
 
@@ -12,15 +12,15 @@ $ npm install marketo-simple-rest-api
 ## Marketo API Requirement
 
 Marketo API's client id, client secret and rest endpoint are required.
-Follow the instruction @ http://developers.marketo.com/blog/quick-start-guide-for-marketo-rest-api/ to sign up for Marketo Rest API.
+Follow the instruction @ http://developers.marketo.com/blog/quick-start-guide-for-marketo-simple-rest-api/ to sign up for Marketo Rest API.
 
 ## Usage
 
 ### init(options, callback);
-Initialize marketo-rest-api with your Marketo confirgurations including campaigns and lists.
+Initialize marketo-simple-rest-api with your Marketo confirgurations including campaigns and lists.
 
 ```js
-var marketo = require('marketo-rest-api');
+var marketo = require('marketo-simple-rest-api');
 var options = {
 	'clientId': 'xxxxx',
 	'clientSecret': 'yyyyy',
